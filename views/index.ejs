@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Genres</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="/script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        #genreSelect {
+            padding: 10px 15px;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .movie-title {
+    width: 200px; /* 제목의 최대 너비 설정 */
+    margin: 10px 0;
+    white-space: normal; /* j여러 줄로 표시되도록 설정 */
+    overflow: hidden; /* 넘치는 텍스트는 숨기지 않고 줄 바꿈 처리 */
+    word-wrap: break-word; /* 단어가 길어도 자동으로 줄 바꿈 */
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: center; /* 제목 가운데 정렬 */
+    height: auto; /* 높이를 자동으로 조정 */
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 1100px;
+    max-height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 30px 0; /* 상하 여백 추가 */
+    align-self: center; /* 정중앙 정렬 */
+}
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .movie-item {
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%; text-align: center; margin-bottom: 50px; padding-top: 50px; padding-bottom: 50px; border-bottom: 1px solid #b0c4d2;  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <h1 style="font-size: 3rem; color: #2c3e50; margin: 0; font-family: 'Arial', sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">
+            TMDB 장르별 영화 평점 시각화 
+        </h1>
+    </div>
+    <div class="container">
+        <!-- <h1>Select a Genre</h1> -->
+        <select id="genreSelect">
+            <option value="" disabled selected>장르선택</option>
+            <% genres.forEach(genre => { %>
+                <option value="<%= genre.id %>"><%= genre.name %></option>
+            <% }) %>
+        </select>
+
+        <div id="moviesList" class="movie-list">
+            <!-- 영화 목록이 여기 표시됩니다 -->
+        </div>
+
+        <canvas id="moviesChart"></canvas>
+    </div>
+
+    <!-- <script>
+        const genreSelect = document.getElementById("genreSelect");
+        const moviesList = document.getElementById("moviesList");
+
+        genreSelect.addEventListener("change", async (event) => {
+            const genreId = event.target.value;
+            try {
+                // 선택한 장르의 영화 데이터를 가져옵니다.
+                const response = await fetch(`/movies?genreId=${genreId}`);
+                const movies = await response.json();
+
+                // 영화 목록 표시
+                moviesList.innerHTML = '';
+                movies.forEach(movie => {
+                    const movieItem = document.createElement("div");
+                    movieItem.classList.add("movie-item");
+                    movieItem.innerHTML = `<p class="movie-title">${movie.title}</p>`;
+                    moviesList.appendChild(movieItem);
+                });
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+            }
+        });
+    </script> -->
+</body>
+</html>
