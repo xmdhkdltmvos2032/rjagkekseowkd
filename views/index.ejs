@@ -35,15 +35,15 @@
         }
 
         .movie-title {
-    width: 200px; /* 제목의 최대 너비 설정 */
+    width: 200px; 
     margin: 10px 0;
-    white-space: normal; /* j여러 줄로 표시되도록 설정 */
-    overflow: hidden; /* 넘치는 텍스트는 숨기지 않고 줄 바꿈 처리 */
-    word-wrap: break-word; /* 단어가 길어도 자동으로 줄 바꿈 */
+    white-space: normal; 
+    overflow: hidden; 
+    word-wrap: break-word; 
     font-size: 1rem;
     line-height: 1.4;
-    text-align: center; /* 제목 가운데 정렬 */
-    height: auto; /* 높이를 자동으로 조정 */
+    text-align: center; 
+    height: auto; 
 }
 
 
@@ -66,8 +66,8 @@ canvas {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    margin: 30px 0; /* 상하 여백 추가 */
-    align-self: center; /* 정중앙 정렬 */
+    margin: 30px 0; 
+    align-self: center; 
 }
 
         .movie-list {
@@ -99,7 +99,7 @@ canvas {
         </select>
 
         <div id="moviesList" class="movie-list">
-            <!-- 영화 목록이 여기 표시됩니다 -->
+            
         </div>
 
         <canvas id="moviesChart"></canvas>
@@ -112,11 +112,11 @@ canvas {
         genreSelect.addEventListener("change", async (event) => {
             const genreId = event.target.value;
             try {
-                // 선택한 장르의 영화 데이터를 가져옵니다.
+                
                 const response = await fetch(`/movies?genreId=${genreId}`);
                 const movies = await response.json();
 
-                // 영화 목록 표시
+                
                 moviesList.innerHTML = '';
                 movies.forEach(movie => {
                     const movieItem = document.createElement("div");
