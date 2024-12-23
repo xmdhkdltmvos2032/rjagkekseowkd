@@ -105,29 +105,6 @@ canvas {
         <canvas id="moviesChart"></canvas>
     </div>
 
-    <!-- <script>
-        const genreSelect = document.getElementById("genreSelect");
-        const moviesList = document.getElementById("moviesList");
-
-        genreSelect.addEventListener("change", async (event) => {
-            const genreId = event.target.value;
-            try {
-                
-                const response = await fetch(`/movies?genreId=${genreId}`);
-                const movies = await response.json();
-
-                
-                moviesList.innerHTML = '';
-                movies.forEach(movie => {
-                    const movieItem = document.createElement("div");
-                    movieItem.classList.add("movie-item");
-                    movieItem.innerHTML = `<p class="movie-title">${movie.title}</p>`;
-                    moviesList.appendChild(movieItem);
-                });
-            } catch (error) {
-                console.error("Error fetching movies:", error);
-            }
-        });
-    </script> -->
+    
 </body>
 </html>
